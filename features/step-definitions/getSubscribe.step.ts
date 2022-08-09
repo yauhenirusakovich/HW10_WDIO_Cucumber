@@ -3,14 +3,18 @@ import {DvaHolmaPage} from "../PageObjects/DvaHolmaPage";
 import {MainPage} from "../PageObjects/MainPage";
 import {BiletPage} from "../PageObjects/BiletPage";
 import {LOCATORS} from "../locators/locators";
+import {logger} from "../../conf/loggerConfig";
 
 const setTimeOut = setTimeout(() => {}, 3000);
-const page = {
+const pages: any = {
     Mpage: MainPage,
     Bpage: BiletPage,
     Thill: DvaHolmaPage,
 };
+
+
 Given (/^I am on the (\w+) page$/, async (page) => {
+    logger.debug('I am on the ${Mpage} page')
     await setTimeOut;
     const mainPage = await new MainPage();
     await setTimeOut;
@@ -18,6 +22,7 @@ Given (/^I am on the (\w+) page$/, async (page) => {
     await setTimeOut;
 });
 When(/^I click (\w+) button$/, async (page) => {
+    logger.debug('I am on the ${page} page')
     const mainHeadButton = await browser.$(LOCATORS.gs1);
     await setTimeOut;
     await mainHeadButton.waitForExist({timeout: 5000});
