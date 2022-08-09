@@ -6,7 +6,7 @@ const setTimeOut = setTimeout(() => {}, 3000);
 const page = {
     Mpage: MainPage,
 };
-Given (/^I am on the (\w+) page$/, async (page) => {
+Given (/^I am visit the (\w+) page$/, async (page) => {
     await setTimeOut;
     const mainPage = await new MainPage();
     await setTimeOut;
